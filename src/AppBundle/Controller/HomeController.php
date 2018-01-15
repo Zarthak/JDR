@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\UserAccount;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class HomeController extends Controller
@@ -12,8 +13,8 @@ class HomeController extends Controller
         $user = $userManager->findUsers();
         dump($user);
         $userManager = $this->get('app.manager.user');
-        $user1 = $userManager->findAll();
-        dump($user1);
+        $user= $userManager->findAll();
+        dump($user);
         die();
         return $this->render('@App/Home/home.html.twig');
     }

@@ -11,5 +11,7 @@ namespace AppBundle\Manager;
 
 class UserManager extends Manager
 {
+    public function create($save=false,$flush=true){
 
+    }
 }

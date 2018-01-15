@@ -9,6 +9,8 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class UserAccount extends BaseUser
 {
+    const ROLE_USER="ROLE_USER",ROLE_ADMIN="ROLE_ADMIN",ROLE_SUPER_ADMIN="ROLE_SUPER_ADMIN";
+
     /**
      * @var integer
      */
@@ -23,6 +25,12 @@ class UserAccount extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->addRole(self::ROLE_DEFAULT);
     }
 }
 

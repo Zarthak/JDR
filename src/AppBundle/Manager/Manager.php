@@ -25,14 +25,36 @@ abstract class Manager
 
     public function __construct(Registry $doctrine, TokenStorage $tokenStorage, $className = null)
     {
-        dump($doctrine->getEntityManager()->getClassMetadata(UserAccount::class)->getTableName());
-        die();
         $this->className = $className;
         $this->doctrine = $doctrine;
         $this->tokenStorage = $tokenStorage;
     }
 
+    public function getRepository(){
+        return $this->doctrine->getRepository($this->className);
+    }
+
+    public function getManager(){
+        return $this->doctrine->getManager();
+    }
+
     public function findAll(){
-        $this->doctrine->getRepository($this->className)->findAll();
+        return $this->getRepository()->findAll();
+    }
+
+    public function findById($id){
+        return $this->getRepository()->find($id);
+    }
+
+    public function create(){
+        return new $this->className;
+    }
+
+    public function save($entity,$flush=true){
+        $this->getManager()->persist($entity);
+        if($flush){
+            $this->getManager()->flush();
+        }
+        return $entity;
     }
 }
