@@ -1,3 +1,7 @@
-admin_homepage:
-    path:     /
-    defaults: { _controller: AdminBundle:Default:index }
+userList:
+    path:     /userlist
+    defaults: { _controller: AdminBundle:User:list }
+
+editUser:
+    path:     /editUser/{userID}
+    defaults: { _controller: AdminBundle:User:editUser }
